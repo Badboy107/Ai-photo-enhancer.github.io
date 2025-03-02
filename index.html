@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Enhancer Tool</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Image Enhancer Tool</h1>
+        <input type="file" id="imageUpload" accept="image/*">
+        <div class="image-container">
+            <div class="image-wrapper">
+                <img id="originalImage" src="" alt="Original Image">
+                <img id="enhancedImage" src="" alt="Enhanced Image">
+            </div>
+            <input type="range" id="slider" min="0" max="100" value="50">
+        </div>
+        <div class="controls">
+            <label for="brightness">Brightness:</label>
+            <input type="range" id="brightness" min="0" max="200" value="100">
+
+            <label for="contrast">Contrast:</label>
+            <input type="range" id="contrast" min="0" max="200" value="100">
+
+            <label for="saturation">Saturation:</label>
+            <input type="range" id="saturation" min="0" max="200" value="100">
+
+            <button onclick="resetFilters()">Reset Filters</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
