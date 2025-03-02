@@ -44,3 +44,28 @@ slider.addEventListener('input', function() {
     originalImage.style.width = `${value}%`;
     enhancedImage.style.width = `${100 - value}%`;
 });
+
+// Download Enhanced Image
+document.getElementById('downloadButton').addEventListener('click', function() {
+    const enhancedImage = document.getElementById('enhancedImage');
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+
+    canvas.width = enhancedImage.naturalWidth;
+    canvas.height = enhancedImage.naturalHeight;
+
+    // Apply filters to the canvas
+    ctx.filter = `
+        brightness(${brightness.value}%)
+        contrast(${contrast.value}%)
+        saturate(${saturation.value}%)
+    `;
+
+    ctx.drawImage(enhancedImage, 0, 0, canvas.width, canvas.height);
+
+    // Convert canvas to image and trigger download
+    const link = document.createElement('a');
+    link.download = 'enhanced-image.png';
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+});
